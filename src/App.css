@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.calendar:hover {
+  background-color: grey;
+}
+
+.f:hover {
+  background-color: grey;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

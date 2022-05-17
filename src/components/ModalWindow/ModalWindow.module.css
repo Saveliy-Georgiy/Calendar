@@ -1,0 +1,78 @@
+.modalBackground {
+    margin: 0; /* убираем отступы */
+    padding: 0; /* убираем отступы */
+    position: fixed; /* фиксируем положение */
+    top:0; /* растягиваем блок по всему экрану */
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(0,0,0,0.5); /* полупрозрачный цвет фона */
+    z-index:100; /* выводим фон поверх всех слоев на странице браузера */
+    opacity:0; /* Делаем невидимым */
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalWindow {
+    width: 100%;
+    max-width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -75px;
+    padding: 2%;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.displayBlock {
+    display: block;
+    opacity:1; /* Делаем невидимым */
+}
+
+.displayNone {
+    display: none;
+    opacity:0; /* Делаем невидимым */
+}
+
+
+/*!* при отображении модального окно - именно здесь начинается магия *!
+.modalBackground:target {
+    opacity: 1; !* делаем окно видимым *!
+    pointer-events: auto; !* элемент видим для событий мыши *!
+}*/
+
+/* ширина диалогового окна и его отступы от экрана */
+
+/* настройка заголовка */
+.modalWindow h3 {
+    padding: 0;
+    margin: 0;
+}
+
+/* оформление сообщение */
+.modalWindow p {
+    padding: 0;
+    margin: 4% 0 8% 0;
+}
+
+/* вид кнопки ЗАКРЫТЬ */
+.modalWindow button {
+    display: block;
+    color: #fff;
+    background: #369;
+    padding: 2%;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* вид кнопки ЗАКРЫТЬ при наведении на нее мыши */
+.modalWindow button:hover {
+    background: #47a;
+}

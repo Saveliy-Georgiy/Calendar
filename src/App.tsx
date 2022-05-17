@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import FullCalendar from '@fullcalendar/react'; // must go before plugins
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import './App.css';
+import s from './ButtonWindow.module.css';
+import { ModalWindow } from './components/ModalWindow/ModalWindow';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let todayStr = new Date().toISOString().replace(/T.*$/, '')
+
+    const [modalWindow, setModalWindow] = useState(false)
+    const someMethod = () => {
+        setModalWindow(true)
+    }
+    let date = new Date();
+    const getWeekDay = (date: Date) => {
+        let days = [0, 1, 2, 3, 4, 5, 6];
+        return days[date.getDay()];
+    }
+
+    return (
+        <div className="App">
+            <FullCalendar
+                editable={false}
+                selectable={false}
+                selectMirror={true}
+                dayMaxEvents={true}
+                slotLabelClassNames={"slotLabel"}
+                allDayClassNames={''}
+                dayCellClassNames={''}
+                dayHeaderClassNames={'f'}
+                eventClassNames={'f'}
+                moreLinkClassNames={'f'}
+                nowIndicatorClassNames={'f'}
+                viewClassNames={''}
+                weekNumberClassNames={'f'}
+                plugins={[timeGridPlugin, interactionPlugin]}
+                initialView="timeGridWeek"
+                /*dateClick={someMethod}*/
+                selectOverlap={true}
+                slotLabelFormat={[{hour: '2-digit', hour12: false, minute: '2-digit'},]}
+                slotMinTime={"05:00:00"}
+                allDaySlot={false}
+                firstDay={getWeekDay(date)}
+                nowIndicator={true}
+
+                events={[
+                    { start: '2022-05-16T13:30:00', end: '2022-05-16T15:00:00', title: "microfon",},
+                    { start: '2022-05-15T12:30:00', end: '2022-05-15T14:00:00', title: "some event 2"},
+                ]}
+       /*         eventContent={renderEventContent}*/
+                eventClick={someMethod}
+            />
+            <ModalWindow name="booking" modalWindow={modalWindow} setModalWindow={setModalWindow}/>
+        </div>
+    );
 }
+
+/*function renderEventContent(props: any) {
+    return (
+        <div onMouseOver={() => {
+            console.log('Hello!');
+        }}>
+
+            <span>{props.event.title}</span>
+        </div>
+    );
+}*/
 
 export default App;
