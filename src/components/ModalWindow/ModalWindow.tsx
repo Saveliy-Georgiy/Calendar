@@ -1,10 +1,18 @@
 import React from 'react';
 import s from './ModalWindow.module.css';
+import events from 'node:events';
+
+type EventsType = {
+    start: string
+    end: string
+    title: string
+}
 
 type ButtonWindowPropsType = {
+    events: Array<EventsType>
     modalWindow: boolean
     setModalWindow: (isActivate: boolean) => void
-    name: string
+
 }
 
 export const ModalWindow = (props: ButtonWindowPropsType) => {
@@ -12,12 +20,14 @@ export const ModalWindow = (props: ButtonWindowPropsType) => {
 const {
     modalWindow,
     setModalWindow,
-    name,
+    events,
 } = props
 
  /*   const activateModalWindow = () => {
         setModalWindow(true);
     };*/
+
+
 
     const deactivateModalWindow = () => {
         setModalWindow(false);
