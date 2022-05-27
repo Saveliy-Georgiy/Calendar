@@ -16,6 +16,7 @@ function App() {
         {start: '2022-05-16T13:30:00', end: '2022-05-16T15:00:00', title: 'microfon',},
         {start: '2022-05-15T12:30:00', end: '2022-05-15T14:00:00', title: 'some event 2'},
         {start: '2022-05-29T12:30:00', end: '2022-05-29T14:00:00', title: 'some event 3'},
+        {start: '2022-05-29T12:30:00', end: '2022-05-29T15:00:00', title: 'add dev-branch'},
     ];
 
     const [modalWindow, setModalWindow] = useState(false);
